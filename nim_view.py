@@ -8,24 +8,25 @@ from nim_controller import (
     _holder,
 )
 
-set_up_piles()
+if __name__ == "__main__":
 
-user = 1
+    set_up_piles()
 
-while True:
-    print("Current position: ")
-    print(show_positions())
-    print("User #{} is to move".format(user))
-    pos = int(input("Take stones from pile: "))
-    qua = int(input("How many stones: "))
-    print()
-    if qua > 0:
-        take_from_pile(position=pos, quanity=qua)
-    else:
-        print("Follow the rules! Enter correct values.")
-        continue
-    if is_game_over():
-        break
-    user = 2 if user == 1 else 1
+    user = 1
 
-print("The user #", user, "wins")
+    while True:
+        print("Current position: ")
+        print(show_positions())
+        print("User #{} is to move".format(user))
+        pos = int(input("Take stones from pile: "))
+        qua = int(input("How many stones: "))
+        if qua > 0:
+            take_from_pile(position=pos, quanity=qua)
+        else:
+            print("Follow the rules! Enter correct values.")
+            continue
+        if is_game_over():
+            break
+        user = 2 if user == 1 else 1
+
+    print("The user #", user, "wins")
